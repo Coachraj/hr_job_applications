@@ -12,7 +12,11 @@ import supabase from './lib/supabase.js';
 dotenv.config();
 
 const app = express();
-const PORT = 5050;
+const PORT = process.env.PORT || 5050;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // =======================
 // Middleware
@@ -143,8 +147,8 @@ app.get('/applications/:id/resume', async (req, res) => {
 // =======================
 // Start server
 // =======================
-app.listen(PORT, '127.0.0.1', () => {
-  console.log(`Server running on http://127.0.0.1:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
 
 // =======================
